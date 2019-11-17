@@ -25,7 +25,7 @@
 			imageURL: 'http://localhost:8200/app/img/avatars/emilijaHeadshot.jpeg'
 		},
 		{
-			name: "Chloe Kennedy",
+			name: "Drita Kaili",
 			measurements: {
 				height: `5'9"`,
 				bust: `35"`,
@@ -34,7 +34,7 @@
 				hair: `blond`,
 				eyes: 'blue'
 			},
-			imageURL: 'http://localhost:8200/app/img/avatars/emilijaHeadshot.jpeg'
+			imageURL: 'http://localhost:8200/app/img/avatars/dritaKailiHeadshot.jpeg'
 		},
 		{
 			name: "Sam Ratajowski",
@@ -46,7 +46,7 @@
 				hair: `brown`,
 				eyes: 'brown'
 			},
-			imageURL: 'http://localhost:8200/app/img/avatars/emilijaHeadshot.jpeg'
+			imageURL: 'http://localhost:8200/app/img/avatars/rataHeadshot.jpg'
 		},
 	];
 	function bookModel() {
@@ -58,16 +58,29 @@
 
 <main class="model-chooser">
 	<!--    You have booked Emilija for November 30th from 8am to 11am for Levi's.-->
-	{#each models as model, i}
-	<div class="model-container">
-		<Model model={model}></Model>
-	</div>
+  {#if booked}
+  You have booked <span class="model-name">Emilija</span> for <span class="client-name">Limited Brands</span> from <span class="selected-time">11/26/2019 @ 8:30am</span> to <span class="selected-time">11/28/2019 @ 12:30 pm</span>
+	{:else}
+    {#each models as model, i}
+    <div class="model-container">
+      <Model model={model}></Model>
+    </div>
 
-	{/each}
-	<button class="book-now" on:click={bookModel}>Book Now</button>
+    {/each}
+    <button class="book-now" on:click={bookModel}>Book Now</button>
+	{/if}
 </main>
 
 <style>
+  .model-name {
+    color: #3d0079;
+    transform-text: uppercase;
+  }
+  .client-name, .selected-time  {
+    color: #56626b;
+    transform-text: uppercase;
+  }
+
 	.book-now {
 		border: 0;
 		background-color: #edeba2;
